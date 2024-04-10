@@ -32,7 +32,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       <CardBody>
         <Flex justifyContent="center">
           <Image
-            src={data.Poster}
+            src={data.image}
             alt="Poster"
             borderRadius="lg"
             boxSize="auto"
@@ -41,19 +41,11 @@ export const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           />
         </Flex>
         <Stack mt="3" spacing="1">
-          <Heading size="lg">{data.Title}</Heading>
+          <Heading size="lg">{data.title}</Heading>
           <Divider />
-          <Text>{data.Director}</Text>
+          <Link>{data.rating}</Link>
           <Divider />
-          <Text maxW="100%">{data.Actors}</Text>
-          <Divider />
-          <Text>{data.Genre}</Text>
-          <Divider />
-          <Link>{data.imdbRating}</Link>
-          <Divider />
-          <Text>{data.Plot}</Text>
-          <Divider />
-          <Text>{data.Released}</Text>
+          <Text>{data.release_date}</Text>
         </Stack>
       </CardBody>
       <CardFooter justifyContent="center">

@@ -3,17 +3,15 @@ import { Box, Flex, Heading, Input, Button, Divider } from '@chakra-ui/react';
 import { MovieCard } from '../components/MovieCard/MovieCard';
 import { MovieType } from '../MovieType';
 
+const SERVER_URL = 'http://localhost:3000/movies'
+
 export const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [movie, setMovies] = useState<MovieType | null>(null);
+  const [movie, setMovies] = useState<MovieType[] | []>([]);
 
   
   const findMovie = () => {
-    if (searchQuery.trim() === '') {
-      return;
-    }
-
-    fetch(`https://www.omdbapi.com/?&apikey=1291eeab&t=${searchQuery}`)
+    fetch(SERVER_URL)
       .then(res => res.json())
       .then(data => setMovies(data))
       .catch(error => {
@@ -47,7 +45,7 @@ export const Movies = () => {
       </Flex>
 
       <Divider mb={4} />
-      {movie ? <MovieCard data={movie} /> : null}
+      {movie ? movie.map(movie => <MovieCard key={movie.id} data={movie} />) : null}
     </Box>
   );
 };
