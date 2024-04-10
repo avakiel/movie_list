@@ -1,31 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Flex, Heading, Input, Button, Divider } from '@chakra-ui/react';
 import { MovieCard } from '../components/MovieCard/MovieCard';
-import { MovieType } from '../MovieType';
+import { fetchMovies, selectMovies } from '../Redux/movieReducer';
+import { useAppDispatch, useAppSelector } from '../Redux/hooks';
+import { Loading } from '../components/Loading/Loading';
 
-const SERVER_URL = 'http://localhost:3000/movies'
+
 
 export const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [movie, setMovies] = useState<MovieType[] | []>([]);
+  const dispatch = useAppDispatch();
+  const movies = useAppSelector(selectMovies)
 
-  
-  const findMovie = () => {
-    fetch(SERVER_URL)
-      .then(res => res.json())
-      .then(data => setMovies(data))
-      .catch(error => {
-        console.error('Error fetching movies:', error);
-      });
-  };
+  useEffect(() => {
+      dispatch(fetchMovies());
+  }, [dispatch]);
 
-  const handleSearchClick = () => {
-    findMovie();
-  };
-
-  console.log(movie)
-
- 
   return (
     <Box p={4}>
       <Heading as="h1" size="xl" mb={4}>
@@ -39,13 +29,15 @@ export const Movies = () => {
           onChange={e => setSearchQuery(e.target.value)}
           mr={2}
         />
-        <Button colorScheme="teal" onClick={handleSearchClick}>
+        <Button colorScheme="teal">
           Search
         </Button>
       </Flex>
 
       <Divider mb={4} />
-      {movie ? movie.map(movie => <MovieCard key={movie.id} data={movie} />) : null}
+      {movies.loading ? <Flex width="100%" justifyContent="center" >
+        <Loading />
+      </Flex> : movies.movies.map(movie => <MovieCard key={movie.id} data={movie} />)}
     </Box>
   );
 };
