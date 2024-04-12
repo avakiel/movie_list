@@ -1,6 +1,6 @@
 import { MovieType } from "../Types/MovieType";
 
-const isLocal = true;
+const isLocal = false;
 const vercelServerAPI = "https://json-server-vercel-dun.vercel.app/"; // don't work correct
 const localServerAPI = "http://localhost:3005/"; // use: $json-server --watch db.json --port 3005
 
