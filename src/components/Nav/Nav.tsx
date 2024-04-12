@@ -1,17 +1,59 @@
-import { Flex } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Flex, Link } from "@chakra-ui/react";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 export const Nav = () => {
+  const { pathname } = useLocation();
+  const [activeLink, setActiveLink] = useState(pathname);
+
+  const handleSetActiveLink = (link: string) => {
+    setActiveLink(link);
+  };
+
   return (
     <Flex
       justifyContent="space-between"
-      alignItems="center"
-      width={"40%"}
+      alignSelf="flex-end"
+      fontSize="30px"
+      fontWeight="700"
+      gap="20px"
     >
-      <Link to="/">Movies</Link>
-      <Link to="/future">Future</Link>
-      <Link to="/favourites">Favourites</Link>
-      <Link to="/watched">Watched</Link>
+      <Link
+        as={RouterLink}
+        to="/"
+        _hover={{ color: "green.300" }}
+        color={activeLink === "/" ? "green.300" : "inherit"}
+        onClick={() => handleSetActiveLink("/")}
+      >
+        Catalog
+      </Link>
+      <Link
+        as={RouterLink}
+        to="/future"
+        _hover={{ color: "green.300" }}
+        color={activeLink === "/future" ? "green.300" : "inherit"}
+        onClick={() => handleSetActiveLink("/future")}
+      >
+        Future
+      </Link>
+      <Link
+        as={RouterLink}
+        to="/favourites"
+        _hover={{ color: "green.300" }}
+        color={activeLink === "/favourites" ? "green.300" : "inherit"}
+        onClick={() => handleSetActiveLink("/favourites")}
+      >
+        Favourites
+      </Link>
+      <Link
+        as={RouterLink}
+        to="/watched"
+        _hover={{ color: "green.300" }}
+        color={activeLink === "/watched" ? "green.300" : "inherit"}
+        onClick={() => handleSetActiveLink("/watched")}
+      >
+        Watched
+      </Link>
     </Flex>
   );
 };

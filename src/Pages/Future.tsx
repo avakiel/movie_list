@@ -3,26 +3,26 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../Redux/hooks";
 import { MovieList } from "../components/MovieList/MovieList";
 import {
-  fetchWatched,
-  selectWatched,
-  selectWatchedLoader,
-} from "../Redux/watchedReducer";
+  fetchFuture,
+  selectFuture,
+  selectFutureLoader,
+} from "../Redux/futureReducer";
 
-export const Watched = () => {
+export const Future = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const watched = useAppSelector(selectWatched);
-  const isLoading = useAppSelector(selectWatchedLoader);
+  const future = useAppSelector(selectFuture);
+  const isLoading = useAppSelector(selectFutureLoader);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchWatched());
+    dispatch(fetchFuture());
   }, [dispatch]);
 
   return (
     <>
       <Box p={4} bg="green.800">
         <Heading color="white" as="h1" size="xl" mb={4}>
-          Watched
+          Future
         </Heading>
 
         <Flex mb={4}>
@@ -49,7 +49,7 @@ export const Watched = () => {
         </Flex>
 
         <Divider mb={4} />
-        <MovieList movies={watched} isLoading={isLoading} />
+        <MovieList movies={future} isLoading={isLoading} />
       </Box>
     </>
   );

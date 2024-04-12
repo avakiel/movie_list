@@ -1,9 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
-import movieReducer from './movieReducer';
+import { configureStore } from "@reduxjs/toolkit";
+import movieReducer from "./movieReducer";
+import favouritesReducer from "./favouritesReducer";
+import futureReducer from "./futureReducer";
+import watchedReducer from "./watchedReducer";
 
 const store = configureStore({
   reducer: {
     movies: movieReducer,
+    favourites: favouritesReducer,
+    future: futureReducer,
+    watched: watchedReducer,
   },
 });
 

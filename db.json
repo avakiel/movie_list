@@ -1,24 +1,7 @@
 {
   "movies": [
     {
-      "id": 1,
-      "title": "The Shawshank Redemption",
-      "description": "Andy Dufresne, wrongly convicted of murder, ends up in Shawshank prison. There he finds friendship, meaning in life, and a way to gain freedom.",
-      "rating": 9.3,
-      "release_date": "1994-09-23",
-      "genre": [
-        "drama",
-        "crime"
-      ],
-      "actors": [
-        "Tim Robbins",
-        "Morgan Freeman"
-      ],
-      "director": "Frank Darabont",
-      "image": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg"
-    },
-    {
-      "id": 2,
+      "id": "2",
       "title": "The Godfather",
       "description": "The story of the Corleone family, one of the most powerful Mafia organizations in the US.",
       "rating": 9.2,
@@ -36,7 +19,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "The Dark Knight",
       "description": "Bruce Wayne faces a new challenge - The Joker, who seeks to plunge Gotham into chaos.",
       "rating": 9,
@@ -55,25 +38,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/sco/8/83/Dark_knight_rises_poster.jpg"
     },
     {
-      "id": 4,
-      "title": "12 Angry Men",
-      "description": "12 jurors must reach a unanimous verdict on the fate of a young man accused of murder.",
-      "rating": 8.9,
-      "release_date": "1957-04-10",
-      "genre": [
-        "drama",
-        "crime"
-      ],
-      "actors": [
-        "Henry Fonda",
-        "Lee Cobb",
-        "Martin Balsam"
-      ],
-      "director": "Sidney Lumet",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Twelve_Angry_Men.png"
-    },
-    {
-      "id": 5,
+      "id": "5",
       "title": "Schindler's List",
       "description": "The story of Oskar Schindler, who saved the lives of thousands of Jews during the Holocaust.",
       "rating": 8.9,
@@ -91,7 +56,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/3/38/Schindler%27s_List_movie.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Pulp Fiction",
       "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
       "rating": 8.9,
@@ -109,7 +74,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/3/3b/Pulp_Fiction_%281994%29_poster.jpg"
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "The Lord of the Rings: The Return of the King",
       "description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
       "rating": 8.9,
@@ -127,7 +92,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/2/23/The_Lord_of_the_Rings%2C_TROTK_%282003%29.jpg"
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Forrest Gump",
       "description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal, and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
       "rating": 8.8,
@@ -145,7 +110,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg"
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Fight Club",
       "description": "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
       "rating": 8.8,
@@ -163,7 +128,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg"
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "Inception",
       "description": "A thief who enters the dreams of others to steal secrets from their subconscious must plant an idea into his target's mind.",
       "rating": 8.8,
@@ -182,7 +147,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg"
     },
     {
-      "id": 11,
+      "id": "11",
       "title": "The Matrix",
       "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
       "rating": 8.7,
@@ -200,7 +165,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg"
     },
     {
-      "id": 12,
+      "id": "12",
       "title": "Goodfellas",
       "description": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
       "rating": 8.7,
@@ -219,7 +184,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/7/7b/Goodfellas.jpg"
     },
     {
-      "id": 13,
+      "id": "13",
       "title": "The Lord of the Rings: The Fellowship of the Ring",
       "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
       "rating": 8.8,
@@ -238,7 +203,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Lord_of_the_Rings%2C_TFOTR_%282001%29.jpg"
     },
     {
-      "id": 14,
+      "id": "14",
       "title": "The Lord of the Rings: The Two Towers",
       "description": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.",
       "rating": 8.7,
@@ -257,7 +222,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/f/fc/The_Lord_of_the_Rings%2C_T2T_%282002%29.jpg"
     },
     {
-      "id": 15,
+      "id": "15",
       "title": "The Green Mile",
       "description": "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
       "rating": 8.6,
@@ -276,7 +241,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/e/e2/The_Green_Mile_%28movie_poster%29.jpg"
     },
     {
-      "id": 16,
+      "id": "16",
       "title": "The Shawshank Redemption",
       "description": "Andy Dufresne, wrongly convicted of murder, ends up in Shawshank prison. There he finds friendship, meaning in life, and a way to gain freedom.",
       "rating": 9.3,
@@ -293,7 +258,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg"
     },
     {
-      "id": 17,
+      "id": "17",
       "title": "The Godfather",
       "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
       "rating": 9.2,
@@ -311,7 +276,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg"
     },
     {
-      "id": 18,
+      "id": "18",
       "title": "The Dark Knight",
       "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
       "rating": 9,
@@ -330,7 +295,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg"
     },
     {
-      "id": 19,
+      "id": "19",
       "title": "12 Angry Men",
       "description": "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
       "rating": 8.9,
@@ -347,7 +312,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/commons/b/b5/12_Angry_Men_%281957_film_poster%29.jpg"
     },
     {
-      "id": 20,
+      "id": "20",
       "title": "Schindler's List",
       "description": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
       "rating": 8.9,
@@ -366,15 +331,7 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/3/38/Schindler%27s_List_movie.jpg"
     }
   ],
-  "future": [
-    {
-      "id": 2
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 15
-    }
-  ]
+  "favourite": [],
+  "watched": [],
+  "future": []
 }

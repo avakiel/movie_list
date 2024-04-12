@@ -1,55 +1,127 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../Redux/Store';
-import { AppDispatch } from '../Redux/Store';
-import { MovieType } from '../MovieType';
-
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "../Redux/Store";
+import { MovieType } from "../Types/MovieType";
+import {
+  deleteMovie,
+  getMovies,
+  postMovie,
+  updateMovie,
+} from "../fetchClient/fetchClient";
 
 export interface MoviesState {
   movies: MovieType[];
   loading: boolean;
-  fetchError: string
+  error: string;
 }
 
 const initialState: MoviesState = {
   movies: [],
   loading: false,
-  fetchError: '',
+  error: "",
 };
 
-export const moviesSlice = createSlice({
-  name: 'movies',
-  initialState,
-  reducers: {
-    setMovies: (state, action: PayloadAction<MovieType[]>) => {
-      state.movies = action.payload;
-      state.loading = false;
-    },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-    },
-    setFetchError: (state, action: PayloadAction<string>) => {
-      state.fetchError = action.payload
+export const fetchMovies = createAsyncThunk("movies/get", async () => {
+  const response = await getMovies("movies");
+
+  return response;
+});
+
+export const addMovie = createAsyncThunk(
+  "movies/post",
+  async (newMovie: MovieType) => {
+    const response = await postMovie(newMovie);
+
+    return response;
+  }
+);
+
+export const removeMovie = createAsyncThunk(
+  "movies/delete",
+  async (id: string, { rejectWithValue }) => {
+    try {
+      const response = await deleteMovie(id);
+
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
     }
+  }
+);
+
+export const patchMovie = createAsyncThunk(
+  "movie/update",
+  async (movie: MovieType) => {
+    const response = await updateMovie(movie);
+
+    return response;
+  }
+);
+
+export const moviesSlice = createSlice({
+  name: "movies",
+  initialState,
+  reducers: {},
+  extraReducers(builder) {
+    builder
+      .addCase(fetchMovies.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchMovies.fulfilled, (state, action) => {
+        state.movies = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchMovies.rejected, (state, action) => {
+        state.error = "Sorry, try again later.";
+        state.loading = false;
+      })
+      .addCase(addMovie.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addMovie.fulfilled, (state, action) => {
+        state.movies.push(action.payload);
+        state.loading = false;
+      })
+      .addCase(addMovie.rejected, (state, action) => {
+        state.error = "Failed to add movie";
+        state.loading = false;
+      })
+      .addCase(removeMovie.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(removeMovie.fulfilled, (state, action) => {
+        console.log(state.movies);
+        console.log(action.payload);
+        state.movies = state.movies.filter(
+          (movie) => movie.id !== action.payload
+        );
+        state.loading = false;
+      })
+      .addCase(removeMovie.rejected, (state, action) => {
+        state.error = "Failed to delete movie";
+        state.loading = false;
+      })
+      .addCase(patchMovie.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(patchMovie.fulfilled, (state, action) => {
+        const updatedMovie = action.payload;
+        const index = state.movies.findIndex(
+          (movie) => movie.id === updatedMovie.id
+        );
+        if (index !== -1) {
+          state.movies[index] = updatedMovie;
+        }
+        state.loading = false;
+      })
+
+      .addCase(patchMovie.rejected, (state, action) => {
+        state.error = "Sorry, try again later.";
+        state.loading = false;
+      });
   },
 });
 
-export const { setMovies, setLoading, setFetchError } = moviesSlice.actions;
-
-export const fetchMovies = () => async (dispatch: AppDispatch) => {
-  const SERVER_URL = 'http://localhost:3001/movies';
-  try {
-    dispatch(setLoading(true));
-    const response = await fetch(SERVER_URL);
-    if (!response.ok) {
-      throw new Error('Failed to fetch movies');
-    }
-    const data = await response.json();
-    dispatch(setMovies(data));
-  } catch (error) {
-   dispatch(setFetchError("can't load data"))
-  }
-};
-
-export const selectMovies = (state: RootState) => state.movies;
+export const selectMovies = (state: RootState) => state.movies.movies;
+export const selectMoviesLoader = (state: RootState) => state.movies.loading;
 
 export default moviesSlice.reducer;

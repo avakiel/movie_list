@@ -1,26 +1,26 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import Header from "./components/Header/Header";
 import { Movies } from "./Pages/Movies";
-import { ForFuture } from "./Pages/ForFuture";
+import { Future } from "./Pages/Future";
 import { Favourites } from "./Pages/Favourites";
 import { Watched } from "./Pages/Watched";
+import { Box } from "@chakra-ui/react";
 
 function App() {
   return (
-    <div className="App">
+    <Box className="App" bg="green.800" height="100vh">
       <header>
         <Header />
       </header>
       <main>
         <Routes>
           <Route path="/" element={<Movies />} />
-          <Route path="future" element={<ForFuture />} />
+          <Route path="/future" element={<Future />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/watched" element={<Watched />} />
         </Routes>
       </main>
-    </div>
+    </Box>
   );
 }
 
