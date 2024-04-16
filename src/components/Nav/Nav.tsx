@@ -3,7 +3,7 @@ import { Flex, Link } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
 export const Nav = () => {
-  const [activeLink, setActiveLink] = useState('/movie_list');
+  const [activeLink, setActiveLink] = useState('/');
 
   const handleSetActiveLink = (link: string) => {
     setActiveLink(link);
@@ -19,9 +19,9 @@ export const Nav = () => {
     >
       <Link
         as={RouterLink}
-        to="/movie_list"
+        to="/"
         _hover={{ color: "green.300" }}
-        color={activeLink === "/movie_list" ? "green.300" : "inherit"}
+        color={activeLink === "/" ? "green.300" : "inherit"}
         onClick={() => handleSetActiveLink("/movie_list")}
       >
         Catalog
