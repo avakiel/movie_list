@@ -36,7 +36,7 @@ export const addFavourite = createAsyncThunk(
 
 export const removeFavourite = createAsyncThunk(
   "favourites/delete",
-  async (id: string, { rejectWithValue }) => {
+  async (id: number, { rejectWithValue }) => {
     try {
       const response = await deleteFavourite(id);
 

@@ -1,22 +1,22 @@
 import { MovieType } from "../Types/MovieType";
 
-const isLocal = true;
-const vercelServerAPI = "https://json-server-vercel-dun.vercel.app/"; // don't work correct
+const isLocal = false;
+const renderServerAPI = "https://movie-list-backend-1fvj.onrender.com/";
 const localServerAPI = "http://localhost:3005/"; // use: $json-server --watch db.json --port 3005
 
 export function getMovies(catalog: string) {
-  return fetch(`${isLocal ? localServerAPI : vercelServerAPI}${catalog}`).then(
+  return fetch(`${isLocal ? localServerAPI : renderServerAPI}${catalog}`).then(
     (response) => {
       return response.json();
     }
   );
 }
 
-export function updateMovie(updatedMovie: MovieType) {
+export function updateMovie(updatedMovie: Omit<MovieType, 'id'>, id: number) {
   return fetch(
-    `${isLocal ? localServerAPI : vercelServerAPI}movies/${updatedMovie.id}`,
+    `${isLocal ? localServerAPI : renderServerAPI}movies/${id}`,
     {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -35,8 +35,8 @@ export function updateMovie(updatedMovie: MovieType) {
     });
 }
 
-export function postMovie(newMovie: MovieType) {
-  return fetch(`${isLocal ? localServerAPI : vercelServerAPI}movies`, {
+export function postMovie(newMovie: Omit<MovieType, 'id'>) {
+  return fetch(`${isLocal ? localServerAPI : renderServerAPI}movies`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export function postMovie(newMovie: MovieType) {
 }
 
 export function postFavourite(movie: MovieType) {
-  return fetch(`${isLocal ? localServerAPI : vercelServerAPI}favourite`, {
+  return fetch(`${isLocal ? localServerAPI : renderServerAPI}favourite`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -75,13 +75,13 @@ export function postFavourite(movie: MovieType) {
     });
 }
 
-export function postFuture(movie: MovieType) {
-  return fetch(`${isLocal ? localServerAPI : vercelServerAPI}future`, {
+export function postFuture(movieId: number) {
+  return fetch(`${isLocal ? localServerAPI : renderServerAPI}future`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(movie),
+    body: JSON.stringify({id: movieId}),
   })
     .then((response) => {
       if (!response.ok) {
@@ -95,13 +95,13 @@ export function postFuture(movie: MovieType) {
     });
 }
 
-export function postWatched(movie: MovieType) {
-  return fetch(`${isLocal ? localServerAPI : vercelServerAPI}watched`, {
+export function postWatched(movieId: number) {
+  return fetch(`${isLocal ? localServerAPI : renderServerAPI}watched`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(movie),
+    body: JSON.stringify({id: movieId}),
   })
     .then((response) => {
       if (!response.ok) {
@@ -115,8 +115,8 @@ export function postWatched(movie: MovieType) {
     });
 }
 
-export function deleteMovie(id: string) {
-  return fetch(`${isLocal ? localServerAPI : vercelServerAPI}movies/${id}`, {
+export function deleteMovie(id: number) {
+  return fetch(`${isLocal ? localServerAPI : renderServerAPI}movies/${id}`, {
     method: "DELETE",
   })
     .then((response) => {
@@ -131,8 +131,8 @@ export function deleteMovie(id: string) {
     });
 }
 
-export function deleteFavourite(id: string) {
-  return fetch(`${isLocal ? localServerAPI : vercelServerAPI}favourite/${id}`, {
+export function deleteFavourite(id: number) {
+  return fetch(`${isLocal ? localServerAPI : renderServerAPI}favourite/${id}`, {
     method: "DELETE",
   })
     .then((response) => {
@@ -147,8 +147,8 @@ export function deleteFavourite(id: string) {
     });
 }
 
-export function deleteFuture(id: string) {
-  return fetch(`${isLocal ? localServerAPI : vercelServerAPI}future/${id}`, {
+export function deleteFuture(id: number) {
+  return fetch(`${isLocal ? localServerAPI : renderServerAPI}future/${id}`, {
     method: "DELETE",
   })
     .then((response) => {
@@ -163,8 +163,8 @@ export function deleteFuture(id: string) {
     });
 }
 
-export function deleteWatched(id: string) {
-  return fetch(`${isLocal ? localServerAPI : vercelServerAPI}watched/${id}`, {
+export function deleteWatched(id: number) {
+  return fetch(`${isLocal ? localServerAPI : renderServerAPI}watched/${id}`, {
     method: "DELETE",
   })
     .then((response) => {

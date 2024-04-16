@@ -1,8 +1,13 @@
 # Movie Catalog
+Feel free to edit, delete, add and collect your favorite movies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# FrontEnd - React App with Chakra-ui on Github (https://avakiel.github.io/movie_list/)
+# BackEnd - Express server on Render.com (https://github.com/avakiel/movie_list_backend)
+# Database - PostgreSQL on Aiven.io
 
-## How to use and start project 
+I am currently working on UI part.
+
+## How to use and start project local
 In the project directory in terminal, you can run:
 ### `npm install -g json-server` (db.json allready in your project)
 ### `json-server --watch db.json --port 3005`
@@ -10,13 +15,8 @@ open another terminal
 ### `npm i`
 ### `npm start`
 
-### :)
+### 
 
-### !!! Vercel deploy don't work correct - I'm working on it
 
-fetchClient/fetchClient.ts
-const isLocal = true;
-const vercelServerAPI = "https://json-server-vercel-dun.vercel.app/"; // don't work correct
-const localServerAPI = "http://localhost:3005/"; // use: $json-server --watch db.json --port 3005
 
 

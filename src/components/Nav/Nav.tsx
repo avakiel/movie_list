@@ -20,21 +20,12 @@ export const Nav = () => {
     >
       <Link
         as={RouterLink}
-        to="/"
+        to="/movie_list"
         _hover={{ color: "green.300" }}
-        color={activeLink === "/" ? "green.300" : "inherit"}
-        onClick={() => handleSetActiveLink("/")}
+        color={activeLink === "/movie_list" ? "green.300" : "inherit"}
+        onClick={() => handleSetActiveLink("/movie_list")}
       >
         Catalog
-      </Link>
-      <Link
-        as={RouterLink}
-        to="/future"
-        _hover={{ color: "green.300" }}
-        color={activeLink === "/future" ? "green.300" : "inherit"}
-        onClick={() => handleSetActiveLink("/future")}
-      >
-        Future
       </Link>
       <Link
         as={RouterLink}
@@ -44,6 +35,15 @@ export const Nav = () => {
         onClick={() => handleSetActiveLink("/favourites")}
       >
         Favourites
+      </Link>
+      <Link
+        as={RouterLink}
+        to="/future"
+        _hover={{ color: "green.300" }}
+        color={activeLink === "/future" ? "green.300" : "inherit"}
+        onClick={() => handleSetActiveLink("/future")}
+      >
+        Future
       </Link>
       <Link
         as={RouterLink}

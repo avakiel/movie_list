@@ -97,7 +97,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
     if (isFuture) {
       dispatch(removeFuture(data.id));
     } else {
-      dispatch(addFuture(data));
+      dispatch(addFuture(data.id));
     }
   };
 
@@ -106,7 +106,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
     if (isWatched) {
       dispatch(removeWatched(data.id));
     } else {
-      dispatch(addWatched(data));
+      dispatch(addWatched(data.id));
     }
   };
 

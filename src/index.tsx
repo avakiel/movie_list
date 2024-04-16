@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router basename="/movie_list">
+      <Router basename="/">
         <ChakraProvider>
           <App />
         </ChakraProvider>

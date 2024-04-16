@@ -27,8 +27,8 @@ export const fetchFuture = createAsyncThunk("future/get", async () => {
 
 export const addFuture = createAsyncThunk(
   "Future/post",
-  async (movie: MovieType) => {
-    const response = await postFuture(movie);
+  async (movieId: number) => {
+    const response = await postFuture(movieId);
 
     return response;
   }
@@ -36,7 +36,7 @@ export const addFuture = createAsyncThunk(
 
 export const removeFuture = createAsyncThunk(
   "Future/delete",
-  async (id: string, { rejectWithValue }) => {
+  async (id: number, { rejectWithValue }) => {
     try {
       const response = await deleteFuture(id);
 

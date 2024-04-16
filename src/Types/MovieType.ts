@@ -1,5 +1,5 @@
 export interface MovieType {
-  id: string;
+  id: number;
   title: string;
   description: string;
   rating: number;

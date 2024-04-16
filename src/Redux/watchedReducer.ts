@@ -27,8 +27,8 @@ export const fetchWatched = createAsyncThunk("watched/get", async () => {
 
 export const addWatched = createAsyncThunk(
   "watched/post",
-  async (movie: MovieType) => {
-    const response = await postWatched(movie);
+  async (movieId: number) => {
+    const response = await postWatched(movieId);
 
     return response;
   }
@@ -36,7 +36,7 @@ export const addWatched = createAsyncThunk(
 
 export const removeWatched = createAsyncThunk(
   "watched/delete",
-  async (id: string, { rejectWithValue }) => {
+  async (id: number, { rejectWithValue }) => {
     try {
       const response = await deleteWatched(id);
 

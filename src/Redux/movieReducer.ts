@@ -28,7 +28,7 @@ export const fetchMovies = createAsyncThunk("movies/get", async () => {
 
 export const addMovie = createAsyncThunk(
   "movies/post",
-  async (newMovie: MovieType) => {
+  async (newMovie: Omit<MovieType, 'id'>) => {
     const response = await postMovie(newMovie);
 
     return response;
@@ -37,7 +37,7 @@ export const addMovie = createAsyncThunk(
 
 export const removeMovie = createAsyncThunk(
   "movies/delete",
-  async (id: string, { rejectWithValue }) => {
+  async (id: number, { rejectWithValue }) => {
     try {
       const response = await deleteMovie(id);
 
@@ -50,9 +50,8 @@ export const removeMovie = createAsyncThunk(
 
 export const patchMovie = createAsyncThunk(
   "movie/update",
-  async (movie: MovieType) => {
-    const response = await updateMovie(movie);
-
+  async (params: { movie: Omit<MovieType, 'id'>, id: number }) => {
+    const response = await updateMovie(params.movie, params.id);
     return response;
   }
 );
@@ -92,7 +91,7 @@ export const moviesSlice = createSlice({
         console.log(state.movies);
         console.log(action.payload);
         state.movies = state.movies.filter(
-          (movie) => movie.id !== action.payload
+          (movie) => movie.id !== +action.payload
         );
         state.loading = false;
       })

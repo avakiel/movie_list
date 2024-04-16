@@ -46,7 +46,6 @@ export const EditCard: React.FC<EditCardProps> = ({ data }) => {
       return;
     }
     const updatedMovie = {
-      id: data?.id as string,
       title: title,
       description: description,
       rating: +rating,
@@ -58,7 +57,6 @@ export const EditCard: React.FC<EditCardProps> = ({ data }) => {
     };
 
     const newMovie = {
-      id: Date.now().toString(),
       title: title,
       description: description,
       rating: +rating,
@@ -72,7 +70,8 @@ export const EditCard: React.FC<EditCardProps> = ({ data }) => {
     if (!data) {
       dispatch(addMovie(newMovie));
     } else {
-      dispatch(patchMovie(updatedMovie));
+      dispatch(patchMovie({ movie: updatedMovie, id: data.id }));
+
     }
 
     setTitle("");
@@ -125,7 +124,7 @@ export const EditCard: React.FC<EditCardProps> = ({ data }) => {
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Add new Movie</ModalHeader>
+          <ModalHeader>{data ? 'Edit Movie': 'Add New Movie'}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl isRequired>

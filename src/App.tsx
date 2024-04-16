@@ -14,9 +14,9 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Movies />} />
-          <Route path="/future" element={<Future />} />
+          <Route path="/movie_list" index element={<Movies />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="/future" element={<Future />} />
           <Route path="/watched" element={<Watched />} />
         </Routes>
       </main>
