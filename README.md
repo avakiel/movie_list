@@ -7,7 +7,7 @@ Feel free to edit, delete, add and collect your favorite movies
 
 I am currently working on UI part.
 
-## How to use and start project local
+## How to use and start project local // Now local ver don't work correct, use gh-pages 
 In the project directory in terminal, you can run:
 ### `npm install -g json-server` (db.json allready in your project)
 ### `json-server --watch db.json --port 3005`
