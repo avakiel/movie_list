@@ -22,7 +22,7 @@ export const Nav = () => {
         to="/"
         _hover={{ color: "green.300" }}
         color={activeLink === "/" ? "green.300" : "inherit"}
-        onClick={() => handleSetActiveLink("/movie_list")}
+        onClick={() => handleSetActiveLink("/")}
       >
         Catalog
       </Link>
