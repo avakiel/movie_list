@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Flex, Link } from "@chakra-ui/react";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 export const Nav = () => {
-  const { pathname } = useLocation();
-  const [activeLink, setActiveLink] = useState(pathname);
+  const [activeLink, setActiveLink] = useState('/movie_list');
 
   const handleSetActiveLink = (link: string) => {
     setActiveLink(link);
