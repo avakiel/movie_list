@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import { Movies } from "./Pages/Movies";
 import { Future } from "./Pages/Future";
@@ -14,7 +14,8 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" index element={<Movies />} />
+          <Route path="/movie_list" element={<Navigate to="/" />} />
+          <Route path="/" element={<Movies />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/future" element={<Future />} />
           <Route path="/watched" element={<Watched />} />
